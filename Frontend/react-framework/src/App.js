@@ -1,16 +1,19 @@
-import React from 'react';
-import theme from './Common/Theme';
+// App.js
+import React, { useState } from 'react';
 import './App.css';
+import theme from './Common/Theme';
 
 const App = () => {
-  const appStyles = {
-    background:theme.pageBackground.secondary, 
-    borderRadius: theme.borderRadius.medium, 
-    margin:theme.space.large
+  const [selectedTheme, setSelectedTheme] = useState('theme1');
+
+  const handleThemeChange = (themeName) => {
+    setSelectedTheme(themeName);
   };
 
-  const listItemStyles = {
-  
+  const appStyles = {
+    background: theme[selectedTheme].pageBackground.default || '#191970',
+    borderRadius: theme[selectedTheme].borderRadius.medium || 8,
+    margin: theme[selectedTheme].space.large || 12,
   };
 
   const dummyData = [
@@ -23,13 +26,18 @@ const App = () => {
     <div className="App" style={appStyles}>
       <h1>My App</h1>
 
-        {dummyData.map(({ id, title, description }) => (
-          <div key={id} style={{display:'flex', justifyContent:'space-around'}}>
-            <h2 style={{ fontSize: theme.fontSize.large }}>{title}</h2>
-            <p style={{ fontSize: theme.fontSize.medium }}>{description}</p>
-          </div>
-        ))}
+      {dummyData.map(({ id, title, description }) => (
+        <div key={id} style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <h2 style={{ fontSize: theme[selectedTheme].fontSize.large }}>{title}</h2>
+          <p style={{ fontSize: theme[selectedTheme].fontSize.medium }}>{description}</p>
+        </div>
+      ))}
 
+      <div style={{ marginTop: theme[selectedTheme].space.large }}>
+        <button onClick={() => handleThemeChange('theme1')}>Theme 1</button>
+        <button onClick={() => handleThemeChange('theme2')}>Theme 2</button>
+        <button onClick={() => handleThemeChange('theme3')}>Theme 3</button>
+      </div>
     </div>
   );
 };
