@@ -57,7 +57,7 @@ const styles = {
     border: '1px solid #ddd',
     borderTop: 'none',
     borderRadius: '0 0 4px 4px',
-    backgroundColor: '#fff',
+    backgroundColor: 'gray',
     zIndex: '1',
     marginTop: '5px', // Add a small margin between the selected option and dropdown
   },
