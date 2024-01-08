@@ -5,6 +5,7 @@ import theme from "./Common/Theme";
 import Card from "./Components/Card";
 import DropdownList from "./Components/DropdownList";
 import Navbar from "./Components/Navbar";
+import CSSLearning from "./RnD/CSSLearning";
 
 const App = () => {
   const [selectedTheme, setSelectedTheme] = useState("theme1");
@@ -13,11 +14,11 @@ const App = () => {
     setSelectedTheme(themeName);
   };
 
-  const navbarBrand = "Your Brand";
+  const navbarBrand = "framework team ";
   const navbarLinks = [
-    { text: 'Home', href: '/' },
-    { text: 'About', href: '/about' },
-    { text: 'Contact', href: '/contact' },
+    { text: "Home", href: "/" },
+    { text: "About", href: "/about" },
+    { text: "Contact", href: "/contact" },
   ];
 
   const appStyles = {
@@ -31,12 +32,14 @@ const App = () => {
     { id: 2, title: "Item 2", description: "Description for Item 2" },
     { id: 3, title: "Item 3", description: "Description for Item 3" },
   ];
-  const options1 = ['Option A', 'Option B', 'Option C'];
-  const options2 = ['Apple', 'Banana', 'Orange'];
+  const options1 = ["Option A", "Option B", "Option C"];
+  const options2 = ["Apple", "Banana", "Orange"];
 
   return (
-    <div className="App" style={appStyles}>
-      <h1>My App</h1>
+    <>
+      <CSSLearning />
+      <div className="App" style={appStyles}>
+
       <Navbar brand={navbarBrand} links={navbarLinks} />
       <Card />
       <div style={styles.divCenter}>
@@ -49,10 +52,10 @@ const App = () => {
           key={id}
           style={{ display: "flex", justifyContent: "space-around" }}
         >
-          <h2 style={{ fontSize: theme[selectedTheme].fontSize.large }}>
+          <h2 style={{ fontSize: theme[selectedTheme].fontSize.large, color:theme[selectedTheme].fontColor.primaryColor }}>
             {title}
           </h2>
-          <p style={{ fontSize: theme[selectedTheme].fontSize.medium }}>
+          <p style={{ fontSize: theme[selectedTheme].fontSize.medium, color:theme[selectedTheme].fontColor.primaryColor }}>
             {description}
           </p>
         </div>
@@ -70,13 +73,14 @@ const App = () => {
         <button onClick={() => handleThemeChange("theme3")}>Theme 3</button>
       </div>
     </div>
+    </>
   );
 };
 
 const styles = {
-  divCenter:{
+  divCenter: {
     display: "flex",
     justifyContent: "space-around",
-  }
+  },
 };
 export default App;
